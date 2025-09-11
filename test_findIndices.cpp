@@ -1,25 +1,50 @@
 #include <iostream>
-#include <cassert>
-#include "findIndices.h"
+#include <vector>
+using namespace std;
 
-void test_findIndices() {
-    std::vector<int> arr = {1, 2, 3, 2, 4, 2, 5};
-    // for key = 2
-    std::vector<int> result1 = findIndices(arr, 2);
-    std::vector<int> expected1 = {1, 3, 5};
-    assert(result1 == expected1);
-    // for key = 4
-    std::vector<int> result2 = findIndices(arr, 4);
-    std::vector<int> expected2 = {4};
-    assert(result2 == expected2);
-    // test for when key not in array
-    std::vector<int> result3 = findIndices(arr, 10);
-    std::vector<int> expected3 = {};
-    assert(result3 == expected3);
-
-    std::cout << "✅ All tests passed!\n";
+// Function to find all indices of a given element
+vector<int> findAllIndices(const vector<int>& arr, int key) {
+    vector<int> indices;
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] == key) {
+            indices.push_back(i);
+        }
+    }
+    return indices;
 }
+
+// Forward declaration (so main can use it)
+void printVector(const vector<int>& v);
+
+// Unit test function
+void test_findIndices() {
+    vector<int> arr1 = {1, 2, 3, 2, 4, 2, 5};
+    cout << "Array: {1,2,3,2,4,2,5}, Key = 2 ";
+    printVector(findAllIndices(arr1, 2));  // Expected {1,3,5}
+
+    cout << "Array: {1,2,3,2,4,2,5}, Key = 6 ";
+    printVector(findAllIndices(arr1, 6));  // Expected {}
+
+    vector<int> arr2 = {};
+    cout << "Array: {}, Key = 1 ";
+    printVector(findAllIndices(arr2, 1));  // Expected {}
+}
+
+// Helper function to print vector of indices
+void printVector(const vector<int>& v) {
+    if (v.empty()) {
+        cout << "{}";
+    } else {
+        cout << "{ ";
+        for (int idx : v) cout << idx << " ";
+        cout << "}";
+    }
+    cout << endl;
+}
+
 int main() {
+    cout << "Task: Find All Indices of an Element\n";
+    cout << "=====================================\n";
     test_findIndices();
     return 0;
 }
