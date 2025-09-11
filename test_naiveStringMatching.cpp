@@ -16,9 +16,9 @@ int main() {
     cout << "Pattern 'ABABC' found at index: " 
          << naiveStringMatching(text, "FATIMA2") << endl;
 
-    // Pattern not present
-    cout << "Pattern 'XYZ' found at index: " 
-         << naiveStringMatching(text, "EMAN9") << endl;
+     // Pattern not found
+     cout << "Pattern 'EMAN9' found at index: " 
+           << naiveStringMatching(text, "EMAN9") << endl;
 
     // Empty pattern
     cout << "Empty pattern found at index: " 
